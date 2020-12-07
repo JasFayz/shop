@@ -23,4 +23,10 @@ class ShopCategory extends Model
     {
         return $this->hasMany(ShopCategory::class, 'parent_id');
     }
+
+    public function products()
+    {
+        return $this->hasMany(ShopProduct::class);
+    }
+
 }

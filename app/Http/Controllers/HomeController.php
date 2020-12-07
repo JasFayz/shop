@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ShopCategory;
+use App\Models\ShopProduct;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $categories = ShopCategory::getCategoryArray();
+
+        return view('home', compact('categories'));
     }
 }

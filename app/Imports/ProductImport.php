@@ -2,12 +2,11 @@
 
 namespace App\Imports;
 
-
+use App\ShopProduct;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\ToModel;
 
-
-class CategoryImport implements ToModel
+class ProductImport implements ToModel
 {
     use Importable;
 

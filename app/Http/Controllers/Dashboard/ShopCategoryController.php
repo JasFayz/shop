@@ -8,6 +8,7 @@ use App\Models\ShopCategory;
 use App\Providers\ImportCategoryFromFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use function React\Promise\reduce;
 
 
 class ShopCategoryController extends Controller
@@ -83,8 +84,11 @@ class ShopCategoryController extends Controller
         }
 
         $category = ShopCategory::create($data);
+        if ($category) {
+            return redirect()->route('shop.categories.index')->with('success', 'Категория успешно обновлена');
+        }
+        return redirect()->route('shop..categories.index')->with('error', 'Не удалось добавить категорию');
 
-        return redirect()->route('shop.categories.index');
     }
 
     /**
@@ -132,9 +136,10 @@ class ShopCategoryController extends Controller
             $image = $request->file('image')->store('uploads');
             $data['image'] = $image;
         }
-
-        $shopCategory->update($data);
-        return redirect()->route('shop.categories.edit', $shopCategory->id);
+        if ($shopCategory->update($data)) {
+            return redirect()->route('shop.categories.edit', $shopCategory->id)->with('success', 'Категория успешно обновлена');
+        }
+        return redirect()->route('shop.categories.edit', $shopCategory->id)->with('error', 'не удалось одновить категорию');
     }
 
     /**
@@ -146,7 +151,8 @@ class ShopCategoryController extends Controller
     public function destroy(ShopCategory $shopCategory)
     {
         if ($shopCategory->delete()) {
-            return redirect()->route('shop.categories.index');
+            return redirect()->route('shop.categories.index')->with('success', 'Категория успешно удалена');
         }
+        return redirect()->route()->with('error', 'Не удалось удалить категорию');
     }
 }

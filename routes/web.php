@@ -18,8 +18,10 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('dashboard.home');
         Route::get('/categories/import', [\App\Http\Controllers\Dashboard\ShopCategoryController::class, 'import']);
+        Route::get('/products/import', [\App\Http\Controllers\Dashboard\ShopProductController::class, 'import']);
 
         Route::prefix('shop')->name('shop.')->group(function () {
             Route::resource('categories', ShopCategoryController::class);
+            Route::resource('products', ShopProductController::class);
         });
     });

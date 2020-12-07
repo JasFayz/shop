@@ -57,7 +57,7 @@
                     console.log(preview.children('img')[0].src = event.target.result)
                 }
                 reader.readAsDataURL(selectedFile);
-            })
+            });
         </script>
     @endpush
 

@@ -85,6 +85,12 @@
                         <span class="sidebar-mini-hide">Categories</span>
                     </a>
                 </li>
+                <li>
+                    <a class="active" href="{{ route('shop.products.index') }}">
+                        <i class="si si-badge"></i>
+                        <span class="sidebar-mini-hide">Products</span>
+                    </a>
+                </li>
                 <li class="nav-main-heading">
                     <span class="sidebar-mini-visible">HD</span>
                     <span class="sidebar-mini-hidden">Heading</span>
