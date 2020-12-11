@@ -38,7 +38,7 @@ class ShopCategoryController extends Controller
         }
         $pageCategories = $query->with('parent')->paginate(15);
 
-        return view('shop.categories.index', compact('pageCategories', 'categories'));
+        return view('dashboard.shop.categories.index', compact('pageCategories', 'categories'));
     }
 
     public function import()
@@ -61,7 +61,7 @@ class ShopCategoryController extends Controller
     public function create()
     {
         $categories = ShopCategory::all();
-        return view('shop.categories.create', compact('categories'));
+        return view('dashboard.shop.categories.create', compact('categories'));
     }
 
     /**
@@ -99,22 +99,15 @@ class ShopCategoryController extends Controller
      */
     public function show(ShopCategory $category)
     {
-        //
-        return view('shop.categories.show', compact('category'));
+        return view('dashboard.shop.categories.show', compact('category'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param ShopCategory $editingCategory
-     *
-     */
-    public function edit(ShopCategory $shopCategory)
+    public function edit(ShopCategory $category)
     {
         $allCategories = ShopCategory::all();
-        return view('shop.categories.edit', [
+        return view('dashboard.shop.categories.edit', [
             'allCategories' => $allCategories,
-            'editingCategory' => $shopCategory
+            'editingCategory' => $category
         ]);
     }
 

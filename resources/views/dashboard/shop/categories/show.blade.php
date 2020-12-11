@@ -3,7 +3,6 @@
 
 
 @section('content')
-
     <div class="block pb-20">
         <div class="block-header block-header-default">
             <h3 class="block-title">Категория</h3>

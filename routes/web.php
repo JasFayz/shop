@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('landing');
 
 Route::post('/upload/file', [\App\Http\Controllers\UploadFileController::class, 'upload'])->name('upload-file');
 
@@ -25,3 +25,6 @@ Route::middleware('auth')
             Route::resource('products', ShopProductController::class);
         });
     });
+
+
+Route::get('category/{id}', [\App\Http\Controllers\Shop\CategoryController::class, 'show'])->name('category');

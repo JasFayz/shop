@@ -40,7 +40,7 @@ class ShopProductController extends Controller
         }
         $products = $query->with('category')->paginate(15);
 
-        return view('shop.products.index', compact('products'));
+        return view('dashboard.shop.products.index', compact('products'));
     }
 
     /**
@@ -51,7 +51,7 @@ class ShopProductController extends Controller
     public function create()
     {
         $categories = ShopCategory::all();
-        return view('shop.products.create', compact('categories'));
+        return view('dashboard.shop.products.create', compact('categories'));
     }
 
     /**
@@ -103,14 +103,14 @@ class ShopProductController extends Controller
      */
     public function show(ShopProduct $product)
     {
-        return view('shop.products.show', compact('product'));
+        return view('dashboard.shop.products.show', compact('product'));
     }
 
 
     public function edit(ShopProduct $product)
     {
         $allCategories = ShopCategory::all();
-        return view('shop.products.edit',
+        return view('dashboard.shop.products.edit',
             compact('product', 'allCategories'));
     }
 

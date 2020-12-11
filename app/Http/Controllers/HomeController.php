@@ -15,7 +15,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        parent::__construct();
+//        $this->middleware('auth');
     }
 
     /**
@@ -25,8 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = ShopCategory::getCategoryArray();
-
-        return view('home', compact('categories'));
+        $categories = $this->categories;
+        return view('shop.home', compact('categories'));
     }
 }
